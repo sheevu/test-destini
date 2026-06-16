@@ -297,26 +297,21 @@
   // ── Image Load State Helper for Product Cards ──
   window.initProductImageLoaders = function () {
     document.querySelectorAll('.product-card .img-box img').forEach(img => {
-      if (img.complete && img.naturalWidth > 0) {
+      const handleLoad = () => {
         img.classList.add('loaded');
         const ph = img.closest('.img-box').querySelector('.img-placeholder');
         if (ph && img.classList.contains('main-img')) {
           ph.style.opacity = '0';
-          setTimeout(() => ph.style.display = 'none', 500);
+          setTimeout(() => ph.style.display = 'none', 300);
         }
+      };
+
+      if (img.complete) {
+        handleLoad();
       } else {
-        img.addEventListener('load', function() {
-          this.classList.add('loaded');
-          if (this.classList.contains('main-img')) {
-            const ph = this.closest('.img-box').querySelector('.img-placeholder');
-            if (ph) {
-              ph.style.opacity = '0';
-              setTimeout(() => ph.style.display = 'none', 500);
-            }
-          }
-        });
+        img.addEventListener('load', handleLoad);
         img.addEventListener('error', function() {
-          this.style.display = 'none';
+          img.style.display = 'none';
         });
       }
     });
