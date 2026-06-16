@@ -1,0 +1,65 @@
+Site name - Destini Numbers 
+Phone no. - +91 7269031175
+Email - destininumbers37@gmail.com
+Location - Lucknow
+
+YT - https://youtube.com/shorts/uSuktspsWCg?feature=share
+
+YT2 - https://youtube.com/shorts/yw1I_0JyG5Y?feature=share
+
+Floating Social Bar (High CTR hack)
+
+👉 Sticky floating icons (modern UI)
+
+WhatsApp -  https://wa.me/917269031175
+YouTube - https://www.youtube.com/@DestiniNumbersStudio
+Instagram - https://www.instagram.com/destininumbers/
+FACEBOOK - 	https://www.facebook.com/destininumbers
+Call button -  +917269031175
+
+Blog - https://www.perplexity.ai/page/-.fgnfnoQTs2BynzZnbWSeA
+
+HOSTINGER API TOKEN
+78TbThb3cfB0Zlcsk2q9k8IasvDWb2RXRlcq6eChba8e4d52
+
+{
+  "mcpServers": {
+    "hostinger-api": {
+      "command": "hostinger-api-mcp",
+      "env": {
+        "API_TOKEN": "78TbThb3cfB0Zlcsk2q9k8IasvDWb2RXRlcq6eChba8e4d52"
+      }
+    }
+  }
+}
+
+
+META CONVERSION API 
+EAAelLLsMFzIBRUxQF1TnZCU7ojTe9MGZCkhFVAnJ5LDnsW1SLWUJW5UQ4QJP9X8AMDvBq3b8zCYPY5XcJyCWSfVZBlZAZBNowu3UlDvB4MXFC3DUDOZCGNECvTD3RqoD54bLujkkftvphplzmZCbbXHliSPF7bpDoqaIemycGAqm0HNbxMasyyrXIUuEAZCtywZDZD
+
+
+IMAGEKIT IO API 
+
+private_J/sfe5vKgMonnO5/M+zVC5uXj/0=
+
+PUBLIC KEY
+public_AaSRUi/QJE4nImDT/FHP6t/a+04=
+
+
+// Install: composer require imagekit/imagekit
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use ImageKit\ImageKit;
+
+$imageKit = new ImageKit(
+    "public_AaSRUi/QJE4nImDT/FHP6t/a+04=",
+    "private_J/sfe5vKgMonnO5/M+zVC5uXj/0=",
+    "https://ik.imagekit.io/astrology011"
+);
+
+
+
+curl https://api.imagekit.io/v1/files \ 
+-u private_J/sfe5vKgMonnO5/M+zVC5uXj/0=:
+# The colon prevents the curl from asking for a password.
