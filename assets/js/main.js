@@ -272,4 +272,145 @@
       });
     });
   });
+
+  // ── Scroll to Top Button functionality ──
+  runWhenIdle(function () {
+    const scrollTop = document.createElement("button");
+    scrollTop.className = "scroll-top";
+    scrollTop.setAttribute("aria-label", "Scroll to top");
+    scrollTop.innerHTML = "↑";
+    document.body.appendChild(scrollTop);
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 400) {
+        scrollTop.classList.add("visible");
+      } else {
+        scrollTop.classList.remove("visible");
+      }
+    });
+
+    scrollTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  // ── Image Load State Helper for Product Cards ──
+  window.initProductImageLoaders = function () {
+    document.querySelectorAll('.product-card .img-box img').forEach(img => {
+      if (img.complete && img.naturalWidth > 0) {
+        img.classList.add('loaded');
+        const ph = img.closest('.img-box').querySelector('.img-placeholder');
+        if (ph && img.classList.contains('main-img')) {
+          ph.style.opacity = '0';
+          setTimeout(() => ph.style.display = 'none', 500);
+        }
+      } else {
+        img.addEventListener('load', function() {
+          this.classList.add('loaded');
+          if (this.classList.contains('main-img')) {
+            const ph = this.closest('.img-box').querySelector('.img-placeholder');
+            if (ph) {
+              ph.style.opacity = '0';
+              setTimeout(() => ph.style.display = 'none', 500);
+            }
+          }
+        });
+        img.addEventListener('error', function() {
+          this.style.display = 'none';
+        });
+      }
+    });
+  };
+  runWhenIdle(initProductImageLoaders);
+
+  // ── Cosmic Background Particle Canvas System ──
+  runWhenIdle(function () {
+    const canvases = document.querySelectorAll(".cosmic-canvas");
+    canvases.forEach(function (canvas) {
+      const ctx = canvas.getContext("2d");
+      let animationFrameId;
+      let width = (canvas.width = canvas.parentElement.offsetWidth);
+      let height = (canvas.height = canvas.parentElement.offsetHeight);
+
+      // Handle resize
+      window.addEventListener("resize", function () {
+        if (!canvas.parentElement) return;
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+      });
+
+      const stars = [];
+      const count = Math.min(80, Math.floor((width * height) / 8000));
+
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          r: Math.random() * 1.5 + 0.5,
+          speed: Math.random() * 0.05 + 0.01,
+          opacity: Math.random(),
+          factor: Math.random() > 0.5 ? 1 : -1
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = "rgba(255, 203, 94, 0.4)";
+        stars.forEach(function (s) {
+          s.opacity += s.speed * s.factor;
+          if (s.opacity > 1) {
+            s.opacity = 1;
+            s.factor = -1;
+          } else if (s.opacity < 0) {
+            s.opacity = 0;
+            s.factor = 1;
+            s.x = Math.random() * width;
+            s.y = Math.random() * height;
+          }
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r * (s.opacity * 0.5 + 0.5), 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(255, 203, 94, " + s.opacity * 0.4 + ")";
+          ctx.fill();
+        });
+        animationFrameId = requestAnimationFrame(draw);
+      }
+      draw();
+    });
+  });
+
+  // ── Magnetic Button Effect ──
+  runWhenIdle(function () {
+    const magneticBtns = document.querySelectorAll(".btn-primary, .btn-secondary, .nav-cta, .btn-cosmic");
+    magneticBtns.forEach(function (btn) {
+      if (window.matchMedia("(min-width: 981px)").matches) {
+        btn.addEventListener("mousemove", function (e) {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          btn.style.transform = "translate(" + x * 0.2 + "px, " + y * 0.2 + "px)";
+        });
+        btn.addEventListener("mouseleave", function () {
+          btn.style.transform = "translate(0px, 0px)";
+        });
+      }
+    });
+  });
+
+  // ── Interactive Footer Geometry mousemove glow effect ──
+  runWhenIdle(function () {
+    const footer = document.querySelector(".footer");
+    const graphic = document.querySelector(".footer-graphic");
+    if (footer && graphic) {
+      footer.addEventListener("mousemove", function (e) {
+        const rect = footer.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const width = rect.width;
+        const height = rect.height;
+        const rotate = (x / width - 0.5) * 15;
+        const scale = 1 + (y / height - 0.5) * 0.05;
+        graphic.style.transform = "rotate(" + rotate + "deg) scale(" + scale + ")";
+      });
+    }
+  });
 })();
