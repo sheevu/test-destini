@@ -1,6 +1,16 @@
 <?php
 declare(strict_types=1);
 
+// Ensure CORS allows frontend to fetch API regardless of domain setup
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit;
+}
+
 require_once __DIR__ . '/db.php';
 
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET') {
@@ -29,8 +39,18 @@ if (!$result) {
     ]);
 }
 
+// Dynamically determine the base URL so image paths always resolve correctly on Hostinger
+$scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$base_path = rtrim(dirname(dirname($_SERVER['SCRIPT_NAME'])), '/\\');
+$base_url = $scheme . '://' . $host . $base_path . '/';
+
 $rows = [];
 while ($row = $result->fetch_assoc()) {
+    // Convert relative paths to absolute URLs to prevent broken images
+    if (!empty($row['image_path']) && !preg_match('/^http/', $row['image_path'])) {
+        $row['image_path'] = $base_url . ltrim($row['image_path'], '/');
+    }
     $rows[] = $row;
 }
 
