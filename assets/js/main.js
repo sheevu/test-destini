@@ -53,7 +53,7 @@
             }
           });
         },
-        { threshold: 0.16 }
+        { threshold: 0.02 }
       );
 
       revealElements.forEach(function (element) {
@@ -180,6 +180,10 @@
 
     function respond(intent) {
       if (!replyNode) return;
+      
+      // Show typing indicator
+      replyNode.innerHTML = '<span class="chatbot-typing"><span></span><span></span><span></span></span>';
+      
       let message = "I can help with services, store items, report interpretation, and bookings.";
       if (intent === "services") {
         message = "For services: Career Alignment, Business Numerology, Personal Destiny Reading, and premium packages are available.";
@@ -191,17 +195,19 @@
         message = "For booking: you can connect on WhatsApp directly and select the best consultation format.";
       }
 
-      replyNode.innerHTML =
-        message +
-        " For callback support, please fill this form: " +
-        '<a class="chatbot-form-link" href="' +
-        formLink +
-        '" target="_blank" rel="noopener">Callback Form</a>.';
+      setTimeout(() => {
+        replyNode.innerHTML =
+          message +
+          " For callback support, please fill this form: " +
+          '<a class="chatbot-form-link" href="' +
+          formLink +
+          '" target="_blank" rel="noopener">Callback Form</a>.';
 
-      if (openWhatsApp) {
-        const text = encodeURIComponent(message + " I have also submitted the callback form.");
-        openWhatsApp.href = "https://wa.me/917269031175?text=" + text;
-      }
+        if (openWhatsApp) {
+          const text = encodeURIComponent(message + " I have also submitted the callback form.");
+          openWhatsApp.href = "https://wa.me/917269031175?text=" + text;
+        }
+      }, 450);
     }
 
     if (toggle && panel) {
