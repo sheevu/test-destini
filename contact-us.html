@@ -239,7 +239,7 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
-        <img src="2-logo-dn.png" alt="Destini Numbers logo | देस्तिनी नंबर" width="52" height="52" decoding="async" fetchpriority="high">
+        <img src="2-logo-dn.png" alt="Destini Numbers logo | देस्तिनी नंबर" width="52" height="52" decoding="async" fetchpriority="high" loading="eager">
         <span class="brand-title">Destini Numbers</span>
       </a>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-label="Open menu">Menu</button>
@@ -287,11 +287,11 @@
     </section>
 
     <!-- Quick Connect Channels -->
-    <section class="section reveal" style="background: linear-gradient(180deg, #0d1225 0%, #1a1a2e 100%); padding: 60px 0;">
+    <section class="section reveal dark-bg-section">
       <div class="container">
-        <h2 style="text-align:center;color:#fff;font-size:1.8rem;margin-bottom:10px;">Choose Your Preferred Channel</h2>
-        <p style="text-align:center;color:rgba(255,255,255,0.6);margin-bottom:40px;font-size:0.95rem;">Fastest response guaranteed on WhatsApp. All channels monitored daily.</p>
-        <div class="grid grid-2" style="gap:16px;max-width:760px;margin:0 auto;">
+        <h2>Choose Your Preferred Channel</h2>
+        <p>Fastest response guaranteed on WhatsApp. All channels monitored daily.</p>
+        <div class="grid grid-2 channel-grid">
           <a class="channel-card wa" href="https://wa.me/917269031175?text=Hello%20Destini%20Numbers%2C%20I%20want%20consultation%20guidance." target="_blank" rel="noopener" id="cta-whatsapp">
             <div class="channel-icon">💬</div>
             <div class="channel-text">
@@ -370,7 +370,7 @@
                 <textarea id="message" name="message" placeholder="Share your situation, challenge, or question in detail..." required></textarea>
               </div>
               <div class="btn-row" style="margin-top:14px;">
-                <button class="btn btn-primary" type="submit" id="contact-submit" style="width:100%;justify-content:center;font-size:1rem;padding:16px 24px;">Submit Inquiry | अनुरोध भेजें</button>
+                <button class="btn btn-primary submit-full" type="submit" id="contact-submit">Submit Inquiry | अनुरोध भेजें</button>
               </div>
               <div class="form-success" id="form-success">
                 ✅ Your inquiry has been sent! We'll respond within 24 hours. For urgent queries, WhatsApp us directly.
@@ -408,23 +408,23 @@
               <div class="hours-row"><span class="day">Monday – Friday</span><span class="time">10:00 AM – 7:00 PM</span></div>
               <div class="hours-row"><span class="day">Saturday</span><span class="time">10:00 AM – 4:00 PM</span></div>
               <div class="hours-row"><span class="day">Sunday</span><span class="time closed">Appointment Only</span></div>
-              <p style="font-size:0.8rem;color:#9ca3af;margin:14px 0 0;">WhatsApp messages are monitored outside hours too. We typically respond the next morning.</p>
+              <p class="hours-note">WhatsApp messages are monitored outside hours too. We typically respond the next morning.</p>
             </div>
 
             <!-- Quick links -->
-            <div class="contact-info-box" style="background:linear-gradient(135deg,#fdfaf4,#fff8ee);border-color:rgba(212,167,75,0.3);">
-              <h3 style="color:#7a4a00;">What Can We Help With?</h3>
-              <div class="info-row" style="border-color:rgba(212,167,75,0.15);">
-                <svg viewBox="0 0 24 24" fill="currentColor" style="color:#d4a74b;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
-                <div style="color:#374151;"><strong style="color:#0b1b2b;">Numerology &amp; Astrology</strong><span>Career, business, relationship, timing</span></div>
+            <div class="contact-info-box contact-info-box-light">
+              <h3>What Can We Help With?</h3>
+              <div class="info-row">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
+                <div><strong>Numerology &amp; Astrology</strong><span>Career, business, relationship, timing</span></div>
               </div>
-              <div class="info-row" style="border-color:rgba(212,167,75,0.15);">
-                <svg viewBox="0 0 24 24" fill="currentColor" style="color:#d4a74b;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-                <div style="color:#374151;"><strong style="color:#0b1b2b;">Crystal &amp; Remedy Store</strong><span>Order guidance and availability</span></div>
+              <div class="info-row">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                <div><strong>Crystal &amp; Remedy Store</strong><span>Order guidance and availability</span></div>
               </div>
-              <div class="info-row" style="border-color:rgba(212,167,75,0.15);">
-                <svg viewBox="0 0 24 24" fill="currentColor" style="color:#d4a74b;"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
-                <div style="color:#374151;"><strong style="color:#0b1b2b;">Report &amp; Tool Follow-up</strong><span>Interpretation help after using free tools</span></div>
+              <div class="info-row">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+                <div><strong>Report &amp; Tool Follow-up</strong><span>Interpretation help after using free tools</span></div>
               </div>
             </div>
           </div>

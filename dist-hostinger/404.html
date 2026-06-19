@@ -3,7 +3,7 @@
 
 <head>
   <link rel="preload" href="2-logo-dn.png" as="image">
-  <link rel="preload" href="assets/css/styles.css?v=20260306b" as="style">
+  <link rel="preload" href="assets/css/styles.css?v=20260619c" as="style">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +19,14 @@
   <link rel="canonical" href="https://destininumber.com/404.html">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" href="2-logo-dn.png" type="image/png">
-  <link rel="stylesheet" href="assets/css/fonts.css?v=20260306b">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260306b">
+  <link rel="stylesheet" href="assets/css/fonts.css?v=20260619c">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260619c">
+  <style>
+    .hero-404 { min-height: 100vh; display: grid; align-items: center; }
+    .hero-404 .container { grid-template-columns: 1fr; max-width: 760px; }
+    .hero-404 .hero-copy { text-align: center; }
+    .hero-404 .btn-row { justify-content: center; }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,16 +40,16 @@
 
 <body>
   <main>
-    <section class="page-hero home-hero" style="min-height:100vh;display:grid;align-items:center;">
-      <div class="container hero-layout" style="grid-template-columns:1fr;max-width:760px;">
-        <article class="hero-copy surface" style="text-align:center;">
+    <section class="page-hero home-hero hero-404">
+      <div class="container hero-layout">
+        <article class="hero-copy surface">
           <span class="kicker">404 Error</span>
           <h1>This page is not available</h1>
           <p>The link may be outdated or moved. Use the options below to continue.</p>
-          <div class="btn-row" style="justify-content:center;">
+          <div class="btn-row">
             <a class="btn btn-primary" href="index.html">Go to Home</a>
-            <a class="btn btn-secondary" href="services.html">View Services</a>
-            <a class="btn btn-outline" href="contact.html">Contact Team</a>
+            <a class="btn btn-secondary" href="numerology-astrology-services.html">View Services</a>
+            <a class="btn btn-outline" href="contact-us.html">Contact Team</a>
           </div>
         </article>
       </div>
