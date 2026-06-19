@@ -339,20 +339,20 @@ h3 { font-size: clamp(1.15rem, 1.6vw, 1.34rem); }
 
 .hero-subhead {
   font-size: 1.25rem;
-  color: #f7d8a3;
+  color: #7a3b1e;
   font-weight: 600;
   margin: 0 0 10px;
 }
 
 .hero-support {
   font-size: 1rem;
-  color: var(--ink);
+  color: #4a1c0d;
   font-weight: 600;
 }
 
 .hero-hindi-subhead {
   font-size: 0.95rem;
-  color: #f4c88c;
+  color: #8a4822;
   margin: 0 0 18px;
   font-style: italic;
 }
@@ -468,15 +468,39 @@ h3 { font-size: clamp(1.15rem, 1.6vw, 1.34rem); }
 }
 
 .btn-outline {
-  background: var(--btn-outline-bg, rgba(255, 255, 255, 0.18));
-  border: 1px solid var(--btn-outline-border, rgba(255, 255, 255, 0.5));
-  color: var(--btn-outline-color, #fff);
-  box-shadow: inset 0 0 0 1px rgba(255, 193, 76, 0.2);
+  background: var(--btn-outline-bg, rgba(11, 27, 43, 0.06));
+  border: 1.5px solid var(--btn-outline-border, rgba(11, 27, 43, 0.35));
+  color: var(--btn-outline-color, #0b1b2b);
+  box-shadow: none;
 }
 
 .btn-outline:hover {
-  background: var(--btn-outline-hover-bg, rgba(255, 255, 255, 0.28));
-  color: var(--btn-outline-color, #fff);
+  background: var(--btn-outline-hover-bg, rgba(11, 27, 43, 0.1));
+  color: var(--btn-outline-color, #0b1b2b);
+}
+
+/* btn-outline on dark backgrounds: banner, dark cards */
+.banner .btn-outline {
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+.banner .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* btn-outline on light hero-copy (cream glass) */
+.hero-copy .btn-outline,
+.home-hero .hero-copy .btn-outline {
+  border-color: rgba(11, 27, 43, 0.3);
+  color: #4a1c0d;
+  background: rgba(255, 255, 255, 0.5);
+}
+.hero-copy .btn-outline:hover,
+.home-hero .hero-copy .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.75);
+  color: #4a1c0d;
 }
 
 .hero-side {
@@ -940,16 +964,19 @@ textarea {
 .media-card {
   position: relative;
   overflow: hidden;
-  min-height: 180px;
+  min-height: 200px;
   border-radius: 16px;
   border: 1px solid rgba(255, 183, 62, 0.22);
   box-shadow: 0 14px 28px rgba(13, 20, 51, 0.25);
+  background: linear-gradient(135deg, #171f4f 0%, #0f1538 100%);
 }
 
 .media-card img {
   width: 100%;
   height: 220px;
   object-fit: cover;
+  display: block;
+  background: linear-gradient(135deg, #171f4f 0%, #0f1538 100%);
 }
 
 .media-card span {
@@ -959,9 +986,11 @@ textarea {
   padding: 6px 11px;
   border-radius: 999px;
   font-size: 0.75rem;
+  font-weight: 700;
   color: #fff4d8;
   border: 1px solid rgba(255, 190, 73, 0.45);
-  background: rgba(10, 10, 30, 0.7);
+  background: rgba(10, 10, 30, 0.75);
+  backdrop-filter: blur(4px);
 }
 
 .footer {

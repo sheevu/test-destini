@@ -1,77 +1,263 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <link rel="preload" href="2-logo-dn.png" as="image">
-  <link rel="preload" href="assets/css/styles.css?v=20260306b" as="style">
+  <link rel="preload" href="assets/css/styles.css?v=20260619c" as="style">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tools | Free Numerology Report Generator - Destini Numbers</title>
-  <meta name="description"
-    content="Generate free numerology insights with Destini Numbers tools: life path calculator, compatibility calculator, and house number numerology report.">
-  <meta name="keywords"
-    content="life path calculator, numerology compatibility calculator, house number numerology, free numerology report">
+  <meta name="description" content="Generate free numerology insights with Destini Numbers tools: life path calculator, compatibility calculator, and house number numerology report.">
+  <meta name="keywords" content="life path calculator, numerology compatibility calculator, house number numerology, free numerology report">
   <meta property="og:title" content="Destini Numbers Report Tools">
-  <meta property="og:description"
-    content="Interactive numerology report tools with instant insights and printable output.">
+  <meta property="og:description" content="Interactive numerology report tools with instant insights and printable output.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://destininumber.com/2-logo-dn.png">
   <meta property="og:url" content="https://destininumber.com/free-alignment-report">
   <link rel="canonical" href="https://destininumber.com/free-alignment-report">
   <link rel="preconnect" href="https://wa.me">
-  <link rel="preconnect" href="https://forms.gle">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" href="2-logo-dn.png" type="image/png">
 
   <style>
-    body {
-      margin: 0;
-      font-family: "SoraLocal", "Segoe UI", sans-serif
+    body{margin:0;font-family:"SoraLocal","Segoe UI",sans-serif}
+    .site-header{position:sticky;top:0;z-index:40;background:rgba(11,17,41,.95)}
+    .page-hero{padding:82px 0 78px}
+    .hero-copy{padding:40px}
+
+    /* ── Tools page styles ── */
+    .tools-section { padding: 70px 0 100px; background: linear-gradient(160deg, #fffdf8 0%, #f4f0e8 100%); }
+
+    /* Step indicator */
+    .tools-steps {
+      display: flex;
+      gap: 0;
+      margin-bottom: 48px;
+      justify-content: center;
+    }
+    .step-dot {
+      display: flex; align-items: center; gap: 0;
+    }
+    .step-dot-inner {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #9ca3af;
+      background: #f3f4f6;
+      border: 2px solid transparent;
+      transition: all 0.3s;
+    }
+    .step-dot-inner.active {
+      background: linear-gradient(135deg, #0d1225, #1a1a2e);
+      color: #ffcb5e;
+      border-color: rgba(212,167,75,0.4);
+      box-shadow: 0 4px 20px rgba(11,27,43,0.2);
+    }
+    .step-dot-inner.done {
+      background: linear-gradient(135deg, #d4a74b, #ffcb5e);
+      color: #0b1b2b;
+    }
+    .step-line {
+      width: 40px; height: 2px;
+      background: #e5e7eb;
+      margin: 0 -2px;
+      align-self: center;
+    }
+    .step-num {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem;
+    }
+    .step-dot-inner.active .step-num { background: rgba(255,203,94,0.2); }
+    .step-dot-inner.done .step-num { background: rgba(11,27,43,0.15); }
+
+    /* Main tool panel */
+    .tool-panel-enhanced {
+      background: #fff;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(11,27,43,0.12);
+      border: 1px solid rgba(212,167,75,0.2);
     }
 
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      background: rgba(11, 17, 41, .95)
+    /* Tab navigation */
+    .tabs-enhanced {
+      display: flex;
+      background: linear-gradient(135deg, #0d1225 0%, #1a1a2e 100%);
+      padding: 8px 8px 0;
+      gap: 4px;
     }
-
-    .page-hero {
-      padding: 82px 0 78px
+    .tab-enhanced {
+      flex: 1;
+      padding: 14px 16px;
+      border: none;
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.5);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 12px 12px 0 0;
+      transition: all 0.25s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
     }
+    .tab-enhanced:hover { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
+    .tab-enhanced.active {
+      background: #fff;
+      color: #0b1b2b;
+    }
+    .tab-enhanced .tab-icon { font-size: 1.1rem; }
 
-    .hero-copy {
-      padding: 40px
+    /* Tool section inner */
+    .tool-section-enhanced {
+      display: none;
+      padding: 40px;
+      animation: fadeIn 0.35s ease;
+    }
+    .tool-section-enhanced.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+    .tool-header { margin-bottom: 28px; }
+    .tool-header h2 { font-size: 1.5rem; color: #0b1b2b; margin-bottom: 8px; }
+    .tool-header p { color: #6b7280; font-size: 0.92rem; line-height: 1.6; margin: 0; }
+
+    /* Form fields */
+    .tool-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .tool-form-grid.single { grid-template-columns: 1fr; max-width: 480px; }
+    .tool-form-field { display: flex; flex-direction: column; gap: 8px; }
+    .tool-form-field label {
+      font-size: 0.8rem; font-weight: 700; color: #374151;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .tool-form-field label span { font-size: 0.7rem; color: #9ca3af; text-transform: none; font-weight: 400; }
+    .tool-form-field input[type="date"],
+    .tool-form-field input[type="text"] {
+      border: 1.5px solid rgba(212,167,75,0.25);
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #0b1b2b;
+      background: #fafaf8;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .tool-form-field input:focus {
+      border-color: #d4a74b;
+      box-shadow: 0 0 0 4px rgba(212,167,75,0.12);
+      background: #fff;
+    }
+    .field-hint-enhanced {
+      font-size: 0.77rem; color: #9ca3af; line-height: 1.5; margin: 0;
+    }
+    .tool-btn-row { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Report box */
+    .report-box-enhanced {
+      display: none;
+      margin-top: 36px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(212,167,75,0.25);
+      animation: reportReveal 0.4s ease;
+    }
+    @keyframes reportReveal { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: none; } }
+    .report-box-enhanced.visible { display: block; }
+    .report-header {
+      background: linear-gradient(135deg, #0d1225 0%, #1a1a2e 100%);
+      padding: 28px 32px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .report-orb {
+      width: 64px; height: 64px; min-width: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d4a74b, #ffcb5e);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 0 0 8px rgba(212,167,75,0.15);
+    }
+    .report-header-text h3 { color: #fff; font-size: 1.3rem; margin: 0 0 4px; }
+    .report-header-text span { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+    .report-body { background: #fff; padding: 28px 32px; }
+    .report-grid-enhanced { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .report-card {
+      background: linear-gradient(135deg, #fdfaf4, #fff8ee);
+      border: 1px solid rgba(212,167,75,0.2);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+    }
+    .report-card .rc-label { font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .report-card .rc-num { font-size: 2.2rem; font-weight: 800; color: #0b1b2b; font-family: "CinzelLocal", Georgia, serif; line-height: 1; margin-bottom: 6px; }
+    .report-card .rc-name { font-size: 0.85rem; color: #d4a74b; font-weight: 700; }
+    .report-insight { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-left: 4px solid #0ea5e9; border-radius: 0 12px 12px 0; padding: 16px 20px; margin-bottom: 16px; }
+    .report-insight.gold { background: linear-gradient(135deg, #fffbeb, #fef3c7); border-left-color: #d4a74b; }
+    .report-insight p { margin: 0; font-size: 0.9rem; color: #374151; line-height: 1.65; }
+    .report-insight strong { color: #0b1b2b; }
+    .report-actions { display: flex; gap: 12px; flex-wrap: wrap; padding-top: 8px; border-top: 1px solid rgba(212,167,75,0.15); margin-top: 8px; }
+
+    /* Mini feature cards */
+    .tool-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .tool-feat-card {
+      background: #fff;
+      border: 1px solid rgba(212,167,75,0.18);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(11,27,43,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .tool-feat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(11,27,43,0.1); }
+    .feat-icon { font-size: 2rem; margin-bottom: 14px; display: block; }
+    .tool-feat-card h3 { font-size: 0.95rem; color: #0b1b2b; margin-bottom: 8px; }
+    .tool-feat-card p { font-size: 0.82rem; color: #6b7280; margin: 0; line-height: 1.55; }
+
+    @media (max-width: 900px) {
+      .tool-features { grid-template-columns: 1fr 1fr; }
+      .tool-form-grid { grid-template-columns: 1fr; }
+      .tabs-enhanced { flex-direction: column; padding: 8px; gap: 4px; }
+      .tab-enhanced { border-radius: 10px; }
+      .tool-section-enhanced { padding: 24px; }
+      .report-header { padding: 20px 24px; }
+      .report-body { padding: 20px 24px; }
+    }
+    @media (max-width: 600px) {
+      .tool-features { grid-template-columns: 1fr; }
+      .tools-steps { display: none; }
     }
   </style>
   <link rel="preload" href="assets/fonts/cinzel-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/sora-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/fonts.css?v=20260306b">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260306b">
+  <link rel="stylesheet" href="assets/css/fonts.css?v=20260619c">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260619c">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Free Numerology Alignment Report Generator",
     "url": "https://destininumber.com/free-alignment-report",
-    "description": "Generate free numerology insights with Destini Numbers tools: life path calculator, compatibility calculator, and house number numerology report.",
+    "description": "Interactive numerology tools: life path, compatibility, and house number calculators.",
     "applicationCategory": "Utility",
     "operatingSystem": "All",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Destini Numbers"
-    }
+    "provider": { "@type": "LocalBusiness", "name": "Destini Numbers" }
   }
   </script>
 </head>
-
 <body data-page="tools">
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="/">
-        <img src="2-logo-dn.png" alt="Destini Numbers logo | देस्तिनी नंबर" width="52" height="52" decoding="async"
-          fetchpriority="high">
+        <img src="2-logo-dn.png" alt="Destini Numbers logo | देस्तिनी नंबर" width="52" height="52" decoding="async" fetchpriority="high">
         <span class="brand-title">Destini Numbers</span>
       </a>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-label="Open menu">Menu</button>
@@ -84,150 +270,249 @@
         <a href="https://www.perplexity.ai/page/-.fgnfnoQTs2BynzZnbWSeA" target="_blank" rel="noopener">Blog</a>
         <a href="contact-us" data-nav="contact">Contact</a>
       </nav>
-      <a class="nav-cta"
-        href="https://wa.me/917269031175?text=Hello%20Destini%20Numbers%2C%20I%20need%20help%20with%20report%20results."
-        target="_blank" rel="noopener">Discuss Report</a>
+      <a class="nav-cta" href="https://wa.me/917269031175?text=Hello%20Destini%20Numbers%2C%20I%20need%20help%20with%20report%20results." target="_blank" rel="noopener">Discuss Report</a>
     </div>
   </header>
 
   <main>
+    <!-- Hero -->
     <section class="page-hero home-hero">
       <canvas class="cosmic-canvas"></canvas>
       <div class="container hero-layout">
         <article class="hero-copy surface">
           <span class="kicker">Interactive Calculators <span class="lang-hi">इंटरैक्टिव कैलकुलेटर</span></span>
-          <h1>Generate Instant Numerology Insights in Minutes <span class="lang-hi">कुछ मिनटों में न्यूमरोलॉजी इनसाइट
-              पाएं</span></h1>
-          <p>Use this tool suite to create a life path reading, compatibility snapshot, and house number vibration
-            report, then connect for detailed guidance.
-            <span class="lang-hi">इन टूल्स से लाइफ पाथ, कम्पैटिबिलिटी और हाउस नंबर रिपोर्ट बनाएं, फिर विस्तृत मार्गदर्शन
-              के लिए संपर्क करें।</span>
-          </p>
+          <h1>Generate Instant Numerology Insights <span class="lang-hi">न्यूमरोलॉजी इनसाइट पाएं</span></h1>
+          <p class="hero-subhead">Free tools — real Vedic numerology methodology, results in under 30 seconds.</p>
+          <p>Use this tool suite to create a life path reading, compatibility snapshot, and house number vibration report, then connect with Diipeshh for detailed guidance and action planning.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#tool-panel">Try the Tools Now</a>
+            <a class="btn btn-secondary" href="numerology-astrology-services">Full Consultation</a>
+          </div>
         </article>
         <aside class="hero-side surface">
           <h2>Included Tools <span class="lang-hi">शामिल टूल्स</span></h2>
           <ul class="checklist">
-            <li>Life Path Number Calculator</li>
-            <li>Compatibility Calculator</li>
-            <li>House Number Calculator</li>
-            <li>Printable report output</li>
+            <li><strong>Life Path Calculator</strong> — Decode your core life number from your date of birth.</li>
+            <li><strong>Compatibility Check</strong> — See energy alignment between two people.</li>
+            <li><strong>House Number Analysis</strong> — Understand your home or office vibration.</li>
+            <li>Printable and WhatsApp-shareable report output.</li>
           </ul>
         </aside>
       </div>
     </section>
 
-    <section class="section reveal">
+    <!-- Tool Panel -->
+    <section class="tools-section reveal" id="tool-panel">
       <div class="container">
-        <article class="surface tool-panel">
-          <div class="tabs" role="tablist" aria-label="Tool tabs">
-            <button class="tab active" data-tool="tool-life" type="button">Life Path | लाइफ पाथ</button>
-            <button class="tab" data-tool="tool-compatibility" type="button">Compatibility | अनुकूलता</button>
-            <button class="tab" data-tool="tool-house" type="button">House Number | हाउस नंबर</button>
+
+        <!-- Feature cards -->
+        <div class="tool-features">
+          <div class="tool-feat-card">
+            <span class="feat-icon">🔢</span>
+            <h3>Life Path Number</h3>
+            <p>Your master number derived from birth date — reveals core personality and life direction.</p>
+          </div>
+          <div class="tool-feat-card">
+            <span class="feat-icon">💑</span>
+            <h3>Compatibility Score</h3>
+            <p>Compare energy patterns between two birth dates for relationships, partnerships, or business.</p>
+          </div>
+          <div class="tool-feat-card">
+            <span class="feat-icon">🏠</span>
+            <h3>House Number Vibration</h3>
+            <p>Decode the energy of your home or flat number and its effect on your daily life.</p>
+          </div>
+        </div>
+
+        <!-- Step indicator -->
+        <div class="tools-steps" aria-hidden="true">
+          <div class="step-dot">
+            <div class="step-dot-inner active" id="step-1-dot">
+              <div class="step-num">1</div>
+              Choose Tool
+            </div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-dot">
+            <div class="step-dot-inner" id="step-2-dot">
+              <div class="step-num">2</div>
+              Enter Details
+            </div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-dot">
+            <div class="step-dot-inner" id="step-3-dot">
+              <div class="step-num">3</div>
+              Read Your Report
+            </div>
+          </div>
+        </div>
+
+        <!-- Enhanced tool panel -->
+        <div class="tool-panel-enhanced" id="tool-panel-inner">
+
+          <!-- Enhanced tabs -->
+          <div class="tabs-enhanced" role="tablist" aria-label="Numerology tool tabs">
+            <button class="tab-enhanced active" data-tool="tool-life" type="button" role="tab" aria-selected="true" id="tab-life">
+              <span class="tab-icon">🔢</span> Life Path
+            </button>
+            <button class="tab-enhanced" data-tool="tool-compatibility" type="button" role="tab" aria-selected="false" id="tab-compat">
+              <span class="tab-icon">💑</span> Compatibility
+            </button>
+            <button class="tab-enhanced" data-tool="tool-house" type="button" role="tab" aria-selected="false" id="tab-house">
+              <span class="tab-icon">🏠</span> House Number
+            </button>
           </div>
 
-          <section class="tool-section active" id="tool-life">
+          <!-- Life Path Tool -->
+          <section class="tool-section-enhanced active" id="tool-life" role="tabpanel" aria-labelledby="tab-life">
+            <div class="tool-header">
+              <h2>Life Path Number Calculator</h2>
+              <p>Your Life Path Number is the most important number in your numerology chart. Derived from your date of birth, it reveals your core personality, natural strengths, challenges, and the direction your life is meant to follow.</p>
+            </div>
             <form class="tool-form" id="life-path-form">
-              <div class="form-grid">
-                <div>
-                  <label for="dob">Date of Birth | जन्म तिथि</label>
+              <div class="tool-form-grid single">
+                <div class="tool-form-field">
+                  <label for="dob">
+                    Date of Birth
+                    <span>as on your birth certificate</span>
+                  </label>
                   <input id="dob" type="date" required>
-                  <p class="field-hint">Use format from your birth certificate for best accuracy. | सही परिणाम के लिए
-                    जन्म प्रमाणपत्र की तिथि दर्ज करें।</p>
+                  <p class="field-hint-enhanced">Use your exact birth date for accurate results. Even a one-day difference changes your number. | सटीक परिणाम के लिए जन्म प्रमाणपत्र की तिथि दर्ज करें।</p>
                 </div>
               </div>
-              <div class="btn-row" style="margin-top:14px;">
-                <button class="btn btn-primary" type="submit">Generate Life Path Report | रिपोर्ट बनाएं</button>
-                <button class="btn btn-secondary btn-mini" type="button" id="fill-life-demo">Try Demo Date | डेमो
-                  तिथि</button>
+              <div class="tool-btn-row">
+                <button class="btn btn-primary" type="submit" id="life-submit">✦ Generate Life Path Report</button>
+                <button class="btn btn-secondary btn-mini" type="button" id="fill-life-demo">Try Demo Date</button>
               </div>
             </form>
+            <!-- Report box -->
+            <div class="report-box-enhanced" id="report-box-life" aria-live="polite">
+              <div class="report-header">
+                <div class="report-orb" id="life-report-orb">🔢</div>
+                <div class="report-header-text">
+                  <h3 id="life-report-title">Your Life Path Report</h3>
+                  <span id="life-report-subtitle">Free Vedic Snapshot · फ्री वैदिक स्नैपशॉट</span>
+                </div>
+              </div>
+              <div class="report-body">
+                <div class="report-grid-enhanced" id="life-report-cards"></div>
+                <div id="life-report-insights"></div>
+                <div class="report-actions">
+                  <button id="print-report-life" class="btn btn-secondary" type="button">🖨 Print Report</button>
+                  <button id="send-whatsapp-life" class="btn btn-outline" type="button">📲 Share on WhatsApp</button>
+                  <a class="btn btn-primary" href="https://wa.me/917269031175?text=I%20just%20generated%20my%20Life%20Path%20report%20on%20Destini%20Numbers.%20I%20need%20a%20deeper%20reading." target="_blank" rel="noopener">Book Full Reading →</a>
+                </div>
+              </div>
+            </div>
           </section>
 
-          <section class="tool-section" id="tool-compatibility">
+          <!-- Compatibility Tool -->
+          <section class="tool-section-enhanced" id="tool-compatibility" role="tabpanel" aria-labelledby="tab-compat">
+            <div class="tool-header">
+              <h2>Compatibility Calculator</h2>
+              <p>Compare the energy patterns of two birth dates to understand harmony, tension points, and how two people naturally interact. Useful for romantic partners, business co-founders, and family dynamics.</p>
+            </div>
             <form class="tool-form" id="compatibility-form">
-              <div class="form-grid">
-                <div>
-                  <label for="dob-1">First Person DOB | पहले व्यक्ति की जन्म तिथि</label>
+              <div class="tool-form-grid">
+                <div class="tool-form-field">
+                  <label for="dob-1">First Person — Date of Birth</label>
                   <input id="dob-1" type="date" required>
                 </div>
-                <div>
-                  <label for="dob-2">Second Person DOB | दूसरे व्यक्ति की जन्म तिथि</label>
+                <div class="tool-form-field">
+                  <label for="dob-2">Second Person — Date of Birth</label>
                   <input id="dob-2" type="date" required>
                 </div>
               </div>
-              <div class="btn-row" style="margin-top:14px;">
-                <button class="btn btn-primary" type="submit">Generate Compatibility Report | अनुकूलता रिपोर्ट
-                  बनाएं</button>
-                <button class="btn btn-secondary btn-mini" type="button" id="swap-compatibility-dates">Swap Dates |
-                  तिथियां बदलें</button>
+              <div class="tool-btn-row">
+                <button class="btn btn-primary" type="submit">✦ Check Compatibility</button>
+                <button class="btn btn-secondary btn-mini" type="button" id="swap-compatibility-dates">⇄ Swap Dates</button>
               </div>
             </form>
-          </section>
-
-          <section class="tool-section" id="tool-house">
-            <form class="tool-form" id="house-form">
-              <div class="form-grid">
-                <div>
-                  <label for="house-number">House or Flat Number | घर/फ्लैट नंबर</label>
-                  <input id="house-number" type="text" placeholder="Example: B-203" required>
-                  <p class="field-hint">Alpha-numeric values are supported. | अक्षर और अंक दोनों मान्य हैं।</p>
+            <div class="report-box-enhanced" id="report-box-compat" aria-live="polite">
+              <div class="report-header">
+                <div class="report-orb">💑</div>
+                <div class="report-header-text">
+                  <h3 id="compat-report-title">Compatibility Analysis</h3>
+                  <span id="compat-report-subtitle">Energy Pattern Alignment Report</span>
                 </div>
               </div>
-              <div class="btn-row" style="margin-top:14px;">
-                <button class="btn btn-primary" type="submit">Generate House Number Report | हाउस रिपोर्ट बनाएं</button>
-                <button class="btn btn-secondary btn-mini" type="button" id="fill-house-demo">Use Sample | सैंपल
-                  भरें</button>
+              <div class="report-body">
+                <div class="report-grid-enhanced" id="compat-report-cards"></div>
+                <div id="compat-report-insights"></div>
+                <div class="report-actions">
+                  <button id="print-report-compat" class="btn btn-secondary" type="button">🖨 Print Report</button>
+                  <a class="btn btn-primary" href="https://wa.me/917269031175?text=I%20want%20a%20full%20compatibility%20consultation%20for%20my%20relationship." target="_blank" rel="noopener">Book Compatibility Session →</a>
+                </div>
               </div>
-            </form>
+            </div>
           </section>
 
-          <article class="report-box" id="report-box" hidden aria-live="polite">
-            <div class="report-aura" aria-hidden="true"></div>
-            <p class="report-kicker">Free Vedic Snapshot | फ्री वैदिक स्नैपशॉट</p>
-            <h3 id="report-title">Generated Report</h3>
-            <p class="report-subtitle" id="report-subtitle">Your instant summary appears here with bilingual guidance.
-            </p>
-            <div class="report-grid" id="report-content"></div>
-            <div class="btn-row" style="margin-top:16px;">
-              <button id="print-report" class="btn btn-secondary" type="button">Print Report | प्रिंट करें</button>
-              <button id="send-whatsapp" class="btn btn-outline" type="button">Send to WhatsApp | व्हाट्सऐप
-                भेजें</button>
+          <!-- House Number Tool -->
+          <section class="tool-section-enhanced" id="tool-house" role="tabpanel" aria-labelledby="tab-house">
+            <div class="tool-header">
+              <h2>House Number Vibration</h2>
+              <p>The numerological vibration of your house or flat number influences the energy of your daily environment — impacting finances, relationships, health, and focus. Enter your full flat/house number including any letters.</p>
             </div>
-          </article>
-        </article>
+            <form class="tool-form" id="house-form">
+              <div class="tool-form-grid single">
+                <div class="tool-form-field">
+                  <label for="house-number">
+                    House or Flat Number
+                    <span>alphanumeric values supported</span>
+                  </label>
+                  <input id="house-number" type="text" placeholder="e.g. B-203 or 14/A" required>
+                  <p class="field-hint-enhanced">Enter exactly as written on your door or address. Letters are converted to numbers via Vedic system. | अक्षर और अंक दोनों मान्य हैं।</p>
+                </div>
+              </div>
+              <div class="tool-btn-row">
+                <button class="btn btn-primary" type="submit">✦ Analyse House Number</button>
+                <button class="btn btn-secondary btn-mini" type="button" id="fill-house-demo">Use Sample (B-203)</button>
+              </div>
+            </form>
+            <div class="report-box-enhanced" id="report-box-house" aria-live="polite">
+              <div class="report-header">
+                <div class="report-orb">🏠</div>
+                <div class="report-header-text">
+                  <h3 id="house-report-title">House Number Analysis</h3>
+                  <span id="house-report-subtitle">Vedic Vibration Report</span>
+                </div>
+              </div>
+              <div class="report-body">
+                <div class="report-grid-enhanced" id="house-report-cards"></div>
+                <div id="house-report-insights"></div>
+                <div class="report-actions">
+                  <button id="print-report-house" class="btn btn-secondary" type="button">🖨 Print Report</button>
+                  <a class="btn btn-primary" href="https://wa.me/917269031175?text=I%20want%20a%20detailed%20house%20number%20consultation." target="_blank" rel="noopener">Book Detailed Session →</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /tool-panel-enhanced -->
       </div>
     </section>
 
+    <!-- Upgrade banner -->
     <section class="section-tight reveal">
       <div class="container banner">
-        <h2>Need a Complete Personalized Reading? <span class="lang-hi">क्या आपको पूरी व्यक्तिगत रीडिंग चाहिए?</span>
-        </h2>
-        <p>The free tool gives a starter insight. For remedies, timing guidance, and action strategy, book a full
-          consultation.
-          <span class="lang-hi">फ्री टूल शुरुआती जानकारी देता है। उपाय, सही समय और एक्शन प्लान के लिए फुल कंसल्टेशन बुक
-            करें।</span>
+        <h2>Need a Complete Personalized Reading? <span class="lang-hi">क्या आपको पूरी व्यक्तिगत रीडिंग चाहिए?</span></h2>
+        <p>The free tool gives a starter insight. For remedies, timing guidance, and a full action strategy, book a consultation with Diipeshh Barara directly.
+          <span class="lang-hi">फ्री टूल शुरुआती जानकारी देता है। उपाय, सही समय और एक्शन प्लान के लिए फुल कंसल्टेशन बुक करें।</span>
         </p>
-        <div class="btn-row" style="margin-top:16px;">
-          <a class="btn btn-primary" href="numerology-astrology-services">View Consultation Services | सेवाएं देखें</a>
-          <a class="btn btn-outline"
-            href="https://wa.me/917269031175?text=Hello%20Destini%20Numbers%2C%20I%20want%20a%20detailed%20numerology%20report."
-            target="_blank" rel="noopener">Book Detailed Report | विस्तृत रिपोर्ट बुक करें</a>
+        <div class="btn-row" style="margin-top:20px;">
+          <a class="btn btn-primary" href="numerology-astrology-services">View Consultation Services</a>
+          <a class="btn btn-outline" href="https://wa.me/917269031175?text=Hello%20Destini%20Numbers%2C%20I%20want%20a%20detailed%20numerology%20report." target="_blank" rel="noopener" style="border-color:rgba(255,255,255,0.6);color:#fff;background:rgba(255,255,255,0.1);">Book Detailed Report</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <svg class="footer-graphic" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#D4A843"
-      stroke-width="0.5">
-      <circle cx="50" cy="50" r="45" stroke-dasharray="2,2" />
-      <circle cx="50" cy="50" r="35" stroke-dasharray="1,3" />
-      <polygon points="50,5 93,80 7,80" />
-      <polygon points="50,95 93,20 7,20" />
-      <polygon points="50,15 80,70 20,70" />
-      <polygon points="50,85 80,30 20,30" />
-      <circle cx="50" cy="50" r="10" />
-      <circle cx="50" cy="50" r="3" fill="#D4A843" />
+    <svg class="footer-graphic" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#D4A843" stroke-width="0.5">
+      <circle cx="50" cy="50" r="45" stroke-dasharray="2,2" /><circle cx="50" cy="50" r="35" stroke-dasharray="1,3" />
+      <polygon points="50,5 93,80 7,80" /><polygon points="50,95 93,20 7,20" />
+      <circle cx="50" cy="50" r="10" /><circle cx="50" cy="50" r="3" fill="#D4A843" />
     </svg>
     <div class="container footer-top">
       <div class="footer-brand">
@@ -235,8 +520,7 @@
           <img src="2-logo-dn.png" alt="Destini Numbers Logo">
           <span>Destini Numbers</span>
         </div>
-        <p>Strategic career and business alignment using 30 years of professional corporate leadership and ancient Vedic
-          jyotish mastery. Authentically sourced remedies cleansed and charged for your chart.</p>
+        <p>Strategic career and business alignment using 30 years of professional corporate leadership and ancient Vedic jyotish mastery.</p>
       </div>
       <div class="footer-col">
         <h4>Offerings</h4>
@@ -244,8 +528,7 @@
           <a href="numerology-astrology-services">Consultations</a>
           <a href="spiritual-store">Remedy Store</a>
           <a href="free-alignment-report">Report Tools</a>
-          <a href="https://www.perplexity.ai/page/-.fgnfnoQTs2BynzZnbWSeA" target="_blank" rel="noopener">Blog
-            Insights</a>
+          <a href="https://www.perplexity.ai/page/-.fgnfnoQTs2BynzZnbWSeA" target="_blank" rel="noopener">Blog Insights</a>
           <a href="about-diipeshh-barara">About Diipeshh</a>
         </nav>
       </div>
@@ -261,47 +544,35 @@
         <h4>Connect</h4>
         <div class="footer-contact-info">
           <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z" />
-            </svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
             <a href="tel:+917269031175">+91 72690 31175</a>
           </div>
           <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-            </svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             <a href="mailto:destininumbers37@gmail.com">destininumbers37@gmail.com</a>
           </div>
           <div class="footer-contact-item">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-            </svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             <span>Lucknow, Uttar Pradesh, India</span>
           </div>
         </div>
       </div>
     </div>
-    </div>
     <div class="container footer-bottom">
-      <small>&copy; 2026 Destini Numbers. All rights reserved. Crafted with precision for high-growth leaders.</small>
+      <small>&copy; 2026 Destini Numbers. All rights reserved.</small>
       <div class="footer-bottom-links">
-        <a href="/">Terms & Conditions</a>
+        <a href="/">Terms &amp; Conditions</a>
         <a href="/">Privacy Policy</a>
       </div>
     </div>
   </footer>
 
   <div class="chatbot-widget" id="chatbot-widget">
-    <button type="button" class="chatbot-toggle" id="chatbot-toggle" type="button" aria-expanded="false">WhatsApp
-      Assistant</button>
+    <button type="button" class="chatbot-toggle" id="chatbot-toggle" aria-expanded="false">WhatsApp Assistant</button>
     <aside class="chatbot-panel" id="chatbot-panel" hidden>
       <div class="chatbot-header">
         <strong>Destini Quick Help</strong>
-        <button type="button" class="chatbot-close" id="chatbot-close" type="button"
-          aria-label="Close assistant">x</button>
+        <button type="button" class="chatbot-close" id="chatbot-close" aria-label="Close assistant">x</button>
       </div>
       <div class="chatbot-body">
         <div class="chatbot-bubble" id="chatbot-reply">Ask a quick query and get immediate guidance.</div>
@@ -312,54 +583,226 @@
           <button type="button" data-chatbot-intent="booking">Book Call</button>
         </div>
         <div class="chatbot-actions">
-          <a class="chat-link-primary" id="chatbot-open-whatsapp"
-            href="https://wa.me/917269031175?text=Hello%20Destini%20Numbers" target="_blank" rel="noopener">Continue on
-            WhatsApp</a>
-          <a class="chat-link-secondary" href="https://forms.gle/34orCT2JitYgCnbM9" target="_blank" rel="noopener">Fill
-            Callback Form</a>
+          <a class="chat-link-primary" id="chatbot-open-whatsapp" href="https://wa.me/917269031175?text=Hello%20Destini%20Numbers" target="_blank" rel="noopener">Continue on WhatsApp</a>
+          <a class="chat-link-secondary" href="https://forms.gle/34orCT2JitYgCnbM9" target="_blank" rel="noopener">Fill Callback Form</a>
         </div>
       </div>
     </aside>
   </div>
 
-  <script defer src="assets/js/main.js?v=20260306b"></script>
-  <script defer src="assets/js/tools.js?v=20260306b"></script>
-  <div class="sticky-social-bar">
-    <a href="https://wa.me/917269031175" class="social-icon whatsapp" target="_blank" rel="noopener"
-      aria-label="WhatsApp">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.852.002-2.63-1.023-5.101-2.887-6.963C16.578 1.928 14.107.904 11.48.904c-5.448 0-9.886 4.414-9.89 9.846 0 1.637.426 3.236 1.238 4.637l-1.014 3.703 3.8-.992a9.85 9.85 0 0 0 4.453 1.056h.004zM16.57 13.92c-.25-.124-1.472-.727-1.699-.81-.228-.084-.393-.124-.558.124-.165.25-.639.81-.784.975-.145.165-.29.185-.538.062-.248-.124-1.048-.387-1.997-1.233-.738-.658-1.236-1.47-1.381-1.72-.145-.25-.015-.385.11-.508.112-.11.248-.29.372-.435.124-.145.165-.25.248-.415.083-.166.042-.311-.02-.435-.063-.124-.558-1.347-.764-1.845-.2-.486-.403-.42-.558-.428-.145-.007-.31-.01-.476-.01a.916.916 0 0 0-.662.31c-.228.25-.87.85-.87 2.075 0 1.225.89 2.41 1.014 2.575.124.165 1.752 2.674 4.246 3.75 2.494 1.076 2.494.717 2.99.673.497-.043 1.472-.6 1.679-1.18.207-.58.207-1.077.145-1.18-.062-.104-.227-.166-.476-.29z" />
-      </svg>
-    </a>
-    <a href="https://www.youtube.com/@DestiniNumbersStudio" class="social-icon youtube" target="_blank" rel="noopener"
-      aria-label="YouTube">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-      </svg>
-    </a>
-    <a href="https://www.instagram.com/destininumbers/" class="social-icon instagram" target="_blank" rel="noopener"
-      aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
-      </svg>
-    </a>
-    <a href="https://www.facebook.com/destininumbers" class="social-icon facebook" target="_blank" rel="noopener"
-      aria-label="Facebook">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-      </svg>
-    </a>
-    <a href="tel:+917269031175" class="social-icon call" aria-label="Call Phone">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z" />
-      </svg>
-    </a>
-  </div>
-</body>
+  <script>
+    // Enhanced tab switching
+    document.querySelectorAll('.tab-enhanced').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var target = this.dataset.tool;
+        document.querySelectorAll('.tab-enhanced').forEach(function(t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.tool-section-enhanced').forEach(function(s) {
+          s.classList.remove('active');
+        });
+        this.classList.add('active');
+        this.setAttribute('aria-selected', 'true');
+        var sec = document.getElementById(target);
+        if (sec) sec.classList.add('active');
+        // Update steps
+        document.getElementById('step-1-dot').className = 'step-dot-inner done';
+        document.getElementById('step-2-dot').className = 'step-dot-inner active';
+        document.getElementById('step-3-dot').className = 'step-dot-inner';
+      });
+    });
 
+    // Numerology helpers
+    function reduceNum(n) {
+      if (n === 11 || n === 22 || n === 33) return n;
+      while (n > 9) {
+        n = String(n).split('').reduce(function(a, d) { return a + parseInt(d); }, 0);
+        if (n === 11 || n === 22 || n === 33) return n;
+      }
+      return n;
+    }
+    function calcLifePath(dob) {
+      var parts = dob.split('-');
+      var y = parts[0].split('').reduce(function(a, d) { return a + parseInt(d); }, 0);
+      var m = parseInt(parts[1]);
+      var d = parseInt(parts[2]);
+      return reduceNum(reduceNum(y) + reduceNum(m) + reduceNum(d));
+    }
+    function letterToNum(ch) {
+      var val = ch.toUpperCase().charCodeAt(0) - 64;
+      return val > 0 && val <= 26 ? reduceNum(val) : 0;
+    }
+    function calcHouseNum(str) {
+      var total = 0;
+      for (var i = 0; i < str.length; i++) {
+        var c = str[i];
+        if (!isNaN(parseInt(c))) total += parseInt(c);
+        else if (c.match(/[a-zA-Z]/)) total += letterToNum(c);
+      }
+      return reduceNum(total);
+    }
+
+    var lifePathNames = ['','The Leader','The Intuitive','The Communicator','The Builder','The Freedom Seeker','The Nurturer','The Seeker','The Powerhouse','The Humanitarian','The Enlightened','The Master Intuitive','The Master Builder'];
+    var lifeMeanings = {
+      1: 'You are a natural-born leader with pioneering energy. Independence and initiative define your path. Best careers: entrepreneurship, management, innovation.',
+      2: 'You are the peacemaker — diplomatic, sensitive, and deeply intuitive. You thrive in partnerships and collaboration. Best environments: counselling, mediation, creative arts.',
+      3: 'Creative, communicative, and optimistic — you are meant to inspire others through expression. Best fields: writing, speaking, teaching, entertainment.',
+      4: 'You are the foundation builder — disciplined, reliable, and methodical. You build lasting systems. Best careers: engineering, finance, architecture, management.',
+      5: 'Freedom and change are your life themes. You are adaptable, adventurous, and multi-talented. Best paths: sales, travel, media, entrepreneurship.',
+      6: 'The nurturer and protector — you are drawn to family, responsibility, and service. Best roles: healthcare, education, social work, home management.',
+      7: 'The seeker of truth — analytical, spiritual, and deeply perceptive. You need solitude to recharge. Best fields: research, philosophy, spirituality, science.',
+      8: 'Ambition, power, and material success are your domain. You are built for business and leadership at scale. Best paths: finance, real estate, corporate leadership.',
+      9: 'Compassion and service to humanity define your path. You are wise, generous, and idealistic. Best roles: healing, social impact, arts, global service.',
+      11: 'Master Number — heightened intuition and spiritual insight. You are here to inspire and illuminate. Sensitive to energy — requires grounding practices.',
+      22: 'Master Builder — the most powerful Life Path. You turn grand visions into tangible reality. Enormous potential for global impact.',
+      33: 'Master Teacher — rare and sacred. You are here to uplift humanity through love, healing, and teaching. Requires selfless dedication.'
+    };
+
+    function makeReportCard(label, num, name) {
+      return '<div class="report-card"><div class="rc-label">' + label + '</div><div class="rc-num">' + num + '</div><div class="rc-name">' + name + '</div></div>';
+    }
+    function makeInsight(text, gold) {
+      return '<div class="report-insight' + (gold ? ' gold' : '') + '"><p>' + text + '</p></div>';
+    }
+
+    // Life Path form
+    document.getElementById('life-path-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var dob = document.getElementById('dob').value;
+      if (!dob) return;
+      var lp = calcLifePath(dob);
+      var lpName = lifePathNames[lp] || 'Special Path';
+      var parts = dob.split('-');
+      var destiny = reduceNum(parseInt(parts[2]));
+      var psychic = reduceNum(parseInt(parts[1]));
+
+      var box = document.getElementById('report-box-life');
+      document.getElementById('life-report-title').textContent = 'Life Path ' + lp + ' — ' + lpName;
+      document.getElementById('life-report-subtitle').textContent = 'Report for DOB: ' + new Date(dob).toLocaleDateString('en-IN', {day:'2-digit',month:'long',year:'numeric'});
+      document.getElementById('life-report-orb').textContent = lp;
+
+      document.getElementById('life-report-cards').innerHTML =
+        makeReportCard('Life Path', lp, lpName) +
+        makeReportCard('Psychic No.', psychic, lifePathNames[psychic] || '') +
+        makeReportCard('Destiny No.', destiny, lifePathNames[destiny] || '');
+
+      document.getElementById('life-report-insights').innerHTML =
+        makeInsight('<strong>Core Meaning:</strong> ' + (lifeMeanings[lp] || 'Your number carries unique patterns worth exploring in a full consultation.')) +
+        makeInsight('<strong>Vedic Note:</strong> This free report gives your starter numbers. A full reading includes name vibration, current year cycle, and precise action steps — book a session with Diipeshh Barara for depth.', true);
+
+      box.classList.add('visible');
+      box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Update steps
+      document.getElementById('step-2-dot').className = 'step-dot-inner done';
+      document.getElementById('step-3-dot').className = 'step-dot-inner active';
+    });
+
+    // Demo date
+    document.getElementById('fill-life-demo').addEventListener('click', function() {
+      document.getElementById('dob').value = '1990-07-14';
+    });
+
+    // Compatibility form
+    document.getElementById('compatibility-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var d1 = document.getElementById('dob-1').value;
+      var d2 = document.getElementById('dob-2').value;
+      if (!d1 || !d2) return;
+      var lp1 = calcLifePath(d1);
+      var lp2 = calcLifePath(d2);
+      var diff = Math.abs(lp1 - lp2);
+      var score = diff === 0 ? 98 : diff <= 2 ? 87 : diff <= 4 ? 72 : diff <= 6 ? 61 : 55;
+      var harmony = score >= 85 ? 'Highly Compatible' : score >= 70 ? 'Good Compatibility' : score >= 60 ? 'Moderate Compatibility' : 'Needs Balancing';
+
+      var box = document.getElementById('report-box-compat');
+      document.getElementById('compat-report-title').textContent = 'Compatibility: ' + lp1 + ' & ' + lp2;
+      document.getElementById('compat-report-subtitle').textContent = harmony + ' · Score: ' + score + '/100';
+
+      document.getElementById('compat-report-cards').innerHTML =
+        makeReportCard('Person 1 LP', lp1, lifePathNames[lp1] || '') +
+        makeReportCard('Person 2 LP', lp2, lifePathNames[lp2] || '') +
+        makeReportCard('Score', score + '%', harmony);
+
+      document.getElementById('compat-report-insights').innerHTML =
+        makeInsight('<strong>Energy Alignment:</strong> Life Path ' + lp1 + ' and Life Path ' + lp2 + ' share a compatibility score of <strong>' + score + '%</strong>. ' + (score >= 80 ? 'These energies work in natural harmony — you complement each other\'s strengths.' : score >= 65 ? 'There is good potential here with conscious communication and shared goals.' : 'Some friction exists, but with awareness and Vedic remedies, this relationship can be strengthened significantly.')) +
+        makeInsight('<strong>Deep Dive Needed:</strong> For full relationship compatibility — including name vibrations, current year cycles, and specific remedies — book a Compatibility Consultation with Diipeshh Barara.', true);
+
+      box.classList.add('visible');
+      box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    document.getElementById('swap-compatibility-dates').addEventListener('click', function() {
+      var d1 = document.getElementById('dob-1').value;
+      var d2 = document.getElementById('dob-2').value;
+      document.getElementById('dob-1').value = d2;
+      document.getElementById('dob-2').value = d1;
+    });
+
+    // House number form
+    var houseNames = ['','New Beginnings','Partnership & Peace','Creativity & Joy','Stability & Work','Change & Freedom','Harmony & Family','Wisdom & Solitude','Power & Wealth','Completion & Service','Mastery'];
+    var houseDescs = {
+      1: 'Strong independent energy. Great for solo entrepreneurs, leaders, and new beginnings. Encourages self-reliance and ambition.',
+      2: 'Peaceful and cooperative energy. Excellent for couples and families. Supports sensitivity, nurturing, and emotional balance.',
+      3: 'Joyful and creative energy. Social, vibrant, and expressive. Ideal for artists, writers, and those who love hosting.',
+      4: 'Stable, grounded, and disciplined. A "work house" — great for building long-term projects. Supports routines and structure.',
+      5: 'Energetic and unpredictable. High change, freedom, and adventure. Best for those comfortable with movement and variety.',
+      6: 'Harmonious, nurturing, and family-oriented. Strongest for raising children and caring for others. Healing energy.',
+      7: 'Introspective and spiritual. A house for study, meditation, and inner work. Solitude is a feature here, not a bug.',
+      8: 'Ambitious and prosperous energy. Attracts material success, business opportunities, and financial growth.',
+      9: 'Compassionate and giving energy. Encourages humanitarianism. Can feel heavy if you carry others\' burdens — set boundaries.'
+    };
+
+    document.getElementById('house-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var hn = document.getElementById('house-number').value.trim();
+      if (!hn) return;
+      var num = calcHouseNum(hn);
+      var hName = houseNames[num] || 'Special Vibration';
+
+      var box = document.getElementById('report-box-house');
+      document.getElementById('house-report-title').textContent = 'House ' + hn + ' = Vibration ' + num;
+      document.getElementById('house-report-subtitle').textContent = hName + ' · Vedic Numerology Analysis';
+
+      document.getElementById('house-report-cards').innerHTML =
+        makeReportCard('Raw Number', hn, 'Your Input') +
+        makeReportCard('Vibration', num, hName);
+
+      document.getElementById('house-report-insights').innerHTML =
+        makeInsight('<strong>Home Energy:</strong> Your house carries the vibration of number <strong>' + num + ' — ' + hName + '</strong>. ' + (houseDescs[num] || 'This number carries unique energy worth exploring in a full consultation.')) +
+        makeInsight('<strong>Personalized Remedy:</strong> The ideal house vibration depends on your personal Life Path number. Book a House Number Consultation with Diipeshh Barara to get precise vastu-aligned remedies and corrections.', true);
+
+      box.classList.add('visible');
+      box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    document.getElementById('fill-house-demo').addEventListener('click', function() {
+      document.getElementById('house-number').value = 'B-203';
+    });
+
+    // Print handlers
+    ['life','compat','house'].forEach(function(t) {
+      var btn = document.getElementById('print-report-' + t);
+      if (btn) btn.addEventListener('click', function() { window.print(); });
+    });
+
+    // WhatsApp share
+    var waBtn = document.getElementById('send-whatsapp-life');
+    if (waBtn) {
+      waBtn.addEventListener('click', function() {
+        var title = document.getElementById('life-report-title').textContent;
+        window.open('https://wa.me/?text=' + encodeURIComponent('My Numerology Report: ' + title + '\n\nGenerated at destininumber.com/free-alignment-report'), '_blank');
+      });
+    }
+  </script>
+  <script defer src="assets/js/main.js?v=20260619c"></script>
+  <script defer src="assets/js/tools.js?v=20260619c"></script>
+  <div class="sticky-social-bar">
+    <a href="https://wa.me/917269031175" class="social-icon whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24z"/></svg></a>
+    <a href="https://www.instagram.com/destininumbers/" class="social-icon instagram" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0z"/></svg></a>
+    <a href="tel:+917269031175" class="social-icon call" aria-label="Call Phone"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg></a>
+  </div>
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">↑</button>
+</body>
 </html>
