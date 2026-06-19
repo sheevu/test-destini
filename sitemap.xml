@@ -1,21 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Pages -->
   <url>
     <loc>https://destininumber.com/</loc>
   </url>
   <url>
-    <loc>https://destininumber.com/services.html</loc>
+    <loc>https://destininumber.com/numerology-astrology-services</loc>
   </url>
   <url>
-    <loc>https://destininumber.com/store.html</loc>
+    <loc>https://destininumber.com/spiritual-store</loc>
   </url>
   <url>
-    <loc>https://destininumber.com/about.html</loc>
+    <loc>https://destininumber.com/about-diipeshh-barara</loc>
   </url>
   <url>
-    <loc>https://destininumber.com/tools.html</loc>
+    <loc>https://destininumber.com/free-alignment-report</loc>
   </url>
   <url>
-    <loc>https://destininumber.com/contact.html</loc>
+    <loc>https://destininumber.com/contact-us</loc>
+  </url>
+
+  <!-- Product Detail Pages -->
+  <url>
+    <loc>https://destininumber.com/product/amethyst-crystal-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/black-tourmaline-crystal-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/rose-quartz-crystal-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/tiger-eye-crystal-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/green-aventurine-crystal-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/pyrite-money-magnet-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/clear-quartz-crystal-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/citrine-success-crystal-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/selenite-cleansing-crystal-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/lapis-lazuli-crystal-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/aventurine-quartz-wealth-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/citrine-rudraksha-success-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/rose-quartz-amethyst-love-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/tourmaline-selenite-protection-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/pyrite-tigers-eye-career-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/amethyst-howlite-calm-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/obsidian-hematite-protection-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/7-chakra-lava-stone-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/lapis-amazonite-communication-bracelet</loc>
+  </url>
+  <url>
+    <loc>https://destininumber.com/product/smoky-quartz-hematite-grounding-bracelet</loc>
   </url>
 </urlset>

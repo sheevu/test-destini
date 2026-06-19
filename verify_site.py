@@ -2,7 +2,7 @@ import os
 import glob
 import re
 
-root_dir = r"d:\CODEX2025-2026\june2026-destini"
+root_dir = os.path.dirname(os.path.abspath(__file__))
 
 errors = []
 successes = []

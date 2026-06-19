@@ -20,7 +20,9 @@
   <link rel="icon" href="2-logo-dn.png" type="image/png">
 
   <style>body{margin:0;font-family:"SoraLocal","Segoe UI",sans-serif}.site-header{position:sticky;top:0;z-index:40;background:rgba(11,17,41,.95)}.page-hero{padding:82px 0 78px}.hero-copy{padding:40px}</style>
-  <link rel="stylesheet" href="assets/css/fonts.css?v=20260619c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css?v=20260619c">
   <script type="application/ld+json">
   {
@@ -111,8 +113,8 @@
 
   <main>
     <section class="page-hero home-hero">
-      <video class="hero-video" autoplay loop muted playsinline poster="assets/img/hero-poster.jpg">
-        <source src="hero-section.mp4" type="video/mp4">
+      <video class="hero-video" autoplay loop muted playsinline poster="assets/img/hero-poster.jpg" id="heroVideo">
+        <source data-src="hero-section.mp4" type="video/mp4">
       </video>
       <canvas class="cosmic-canvas"></canvas>
       <div class="container hero-layout">
@@ -639,12 +641,12 @@
         <div class="grid grid-2" style="max-width: 720px; margin: 0 auto; gap: 20px;">
           <article class="card" style="padding: 0; overflow: hidden; border-radius: var(--radius-md); border: 1px solid rgba(255, 193, 79, 0.25);">
             <div style="position: relative; padding-bottom: 177.77%; height: 0; overflow: hidden;">
-              <iframe src="https://www.youtube.com/embed/uSuktspsWCg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="Numerology Shorts" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe src="https://www.youtube.com/embed/uSuktspsWCg" loading="lazy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="Numerology Shorts" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
           </article>
           <article class="card" style="padding: 0; overflow: hidden; border-radius: var(--radius-md); border: 1px solid rgba(255, 193, 79, 0.25);">
             <div style="position: relative; padding-bottom: 177.77%; height: 0; overflow: hidden;">
-              <iframe src="https://www.youtube.com/embed/yw1I_0JyG5Y" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="Business Rebranding Insights" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe src="https://www.youtube.com/embed/yw1I_0JyG5Y" loading="lazy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="Business Rebranding Insights" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
           </article>
         </div>

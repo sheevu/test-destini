@@ -29,7 +29,7 @@ slugs_map = {
 }
 
 # Paths
-base_dir = "d:\\CODEX2025-2026\\june2026-destini"
+base_dir = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(base_dir, "products.csv")
 product_dir = os.path.join(base_dir, "product")
 store_html_path = os.path.join(base_dir, "spiritual-store.html")
@@ -632,11 +632,11 @@ def process_csv():
             thumbnails_html = '<div class="image-thumbnails">'
             for i, img in enumerate(images):
                 active_class = ' class="active"' if i == 0 else ''
-                thumbnails_html += f'<img{active_class} src="{img}?tr=w-120,h-120,fo-auto" alt="thumbnail" onclick="changeImage(\'{img}?tr=w-600,h-600,fo-auto\', this)">'
+                thumbnails_html += f'<img{active_class} src="{img}?tr=w-120,h-120,f-auto" alt="thumbnail" onclick="changeImage(\'{img}?tr=w-600,h-600,f-auto\', this)">'
             thumbnails_html += '</div>'
             
         # Optimize main image for detail page
-        optimized_main_image = f"{main_image}?tr=w-600,h-600,fo-auto" if main_image else ""
+        optimized_main_image = f"{main_image}?tr=w-600,h-600,f-auto" if main_image else ""
 
         url_encoded_name = urllib.parse.quote(original_name)
 
@@ -692,8 +692,8 @@ def process_csv():
                 <span>{row['Main Label']}</span>
               </div>
               <a href="product/{slug}" style="display:block; width:100%; height:100%; position:absolute; z-index:4;">
-                <img class="main-img" src="{main_image}?tr=w-400,h-400,fo-auto" alt="{row['Image Alt Text']}" loading="lazy">
-                <img class="hover-img" src="{hover_image}?tr=w-400,h-400,fo-auto" alt="{original_name} India" loading="lazy">
+                <img class="main-img" src="{main_image}?tr=w-400,h-400,f-auto" alt="{row['Image Alt Text']}" loading="lazy">
+                <img class="hover-img" src="{hover_image}?tr=w-400,h-400,f-auto" alt="{original_name} India" loading="lazy">
               </a>
             </div>
             <div class="card-body">

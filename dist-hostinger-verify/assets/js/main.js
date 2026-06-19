@@ -414,4 +414,16 @@
       });
     }
   });
+
+  // ── Lazy Load Hero Video on Desktop Only ──
+  runWhenIdle(function () {
+    const video = document.getElementById("heroVideo");
+    if (video && window.innerWidth > 768) {
+      const source = video.querySelector("source");
+      if (source && source.getAttribute("data-src")) {
+        source.src = source.getAttribute("data-src");
+        video.load();
+      }
+    }
+  });
 })();
